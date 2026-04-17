@@ -4,7 +4,7 @@ Project ini merupakan implementasi website dengan tema **Stardew Valley** yang d
 
 ## Deskripsi
 
-Aplikasi ini berfokus pada pengembangan tampilan antarmuka (user interface) berbasis web dengan pendekatan desain yang menarik dan interaktif. Project ini menampilkan elemen-elemen visual yang terinspirasi dari game Stardew Valley yang dikenal dengan konsep simulasi kehidupan seperti bertani, berinteraksi, dan eksplorasi. :contentReference[oaicite:0]{index=0}
+Aplikasi ini berfokus pada pengembangan tampilan antarmuka (user interface) berbasis web dengan pendekatan desain yang menarik dan interaktif. Project ini menampilkan elemen-elemen visual yang terinspirasi dari game Stardew Valley yang dikenal dengan konsep simulasi kehidupan seperti bertani, berinteraksi, dan eksplorasi.
 
 ## Tujuan Project
 
@@ -21,8 +21,7 @@ Selain itu, tujuan dari project ini adalah:
 
 Dalam project ini, saya berperan sebagai **Front-End Developer** yang bertanggung jawab dalam:
 
-- Mendesain tampilan antarmuka website
-- Mengimplementasikan layout menggunakan HTML dan CSS
+- Mengimplementasikan desain dari UI/UX, layout menggunakan HTML dan CSS
 - Menambahkan interaktivitas menggunakan JavaScript
 - Menyesuaikan tampilan agar user-friendly
 
@@ -38,10 +37,12 @@ Dalam project ini, saya berperan sebagai **Front-End Developer** yang bertanggun
 
 ![Landing Page](assets/screenshots/landing-page.png)
 
+
 ### Dashboard & Gameplay (Mining)
 
 ![Main Dashboard](assets/screenshots/main-dashboard.png)
 ![Mining](assets/screenshots/gameplay-mining.png)
+
 
 ### Inventory & Profil Pengguna
 
