@@ -37,12 +37,14 @@ Dalam project ini, saya berperan sebagai **Front-End Developer** yang bertanggun
 
 ![Landing Page](assets/screenshots/landing-page.png)
 
+---
 
 ### Dashboard & Gameplay (Mining)
 
 ![Main Dashboard](assets/screenshots/main-dashboard.png)
 ![Mining](assets/screenshots/gameplay-mining.png)
 
+---
 
 ### Inventory & Profil Pengguna
 
