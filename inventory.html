@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory - Stardew Valley Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #000;
+            font-family: "Micro 5", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("assets/img/LatarProfil.JPG");
+            background-size: cover;
+            background-position: center;
+            image-rendering: pixelated;
+        }
+
+        /* --- MODAL WRAPPER --- */
+        .modal-wrapper {
+            position: relative;
+            width: 100%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- INVENTORY --- */
+        .inventory {
+            background-color: #FFCF85;
+            border: 4px solid #A9500D;
+            width: 70%;
+            border-radius: 16px;
+            box-sizing: border-box;
+            /* Tambahan agar padding/border tidak menambah lebar */
+        }
+
+        /* --- INVENTORY MODAL --- */
+        .inventory-modal {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            image-rendering: pixelated;
+        }
+
+        /* --- TOP SECTION: INVENTORY GRID --- */
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            grid-template-rows: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .slot {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #FADB9E;
+            border: 2px solid #8b4513;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .slot:hover {
+            background-color: #e6b980;
+            border-color: #8b4513;
+        }
+
+        .slot img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            image-rendering: pixelated;
+        }
+
+        /* --- BOTTOM SECTION: CHARACTER & INFO --- */
+        .bottom-section {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+        }
+
+        /* --- LEFT: CHARACTER & EQUIPMENT --- */
+        .character-panel {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 3px solid #c07c55;
+            border-radius: 10px;
+            padding: 15px;
+            position: relative;
+        }
+
+        .equipment-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .equip-slot {
+            width: 40px;
+            height: 40px;
+            background-color: #FADB9E;
+            border: 2px solid #8b4513;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .equip-slot img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .character-portrait {
+            width: 100px;
+            height: 100px;
+            background-color: #d49b68;
+            border: 4px solid #8b4513;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .character-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- RIGHT: INFO & BUTTONS --- */
+        .info-panel {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            color: #5e2c04;
+        }
+
+        .info-text {
+            text-align: center;
+            /* Diubah jadi center */
+        }
+
+        .info-name {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .info-email {
+            font-size: 24px;
+        }
+
+        .back-btn {
+            align-self: center;
+            /* Diubah jadi center */
+            background-color: #FFCF85;
+            border: 3px solid #A9500D;
+            color: #5e2c04;
+            padding: 5px 30px;
+            font-family: "Micro 5", sans-serif;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 #8b4513;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #f4ca90;
+            filter: brightness(1.1);
+        }
+
+        .back-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-wrapper">
+        <div class="inventory">
+            <div class="inventory-modal">
+                <!-- TOP: 3x12 GRID -->
+                <div class="inventory-grid">
+                    <!-- Row 1 -->
+                    <div class="slot"><img src="assets/img/stone.png" alt="Stone"></div>
+                    <div class="slot"><img src="assets/img/Pickaxe 1.png" alt="Pickaxe"></div>
+                    <div class="slot"><img src="assets/img/Sap.png" alt="Sap"></div>
+                    <div class="slot"><img src="assets/img/Iridium_Ore.png" alt="Iridium"></div>
+                    <div class="slot"><img src="assets/img/Gold_Ore.png" alt="Gold"></div>
+                    <div class="slot"><img src="assets/img/Emerald.png" alt="Emerald"></div>
+                    <div class="slot"><img src="assets/img/Copper_Hoe.png" alt="Hoe"></div>
+                    <div class="slot"><img src="assets/img/Cave_Carrot.png" alt="Carrot"></div>
+                    <div class="slot"><img src="assets/img/axe.png" alt="Axe"></div>
+                    <div class="slot"><img src="assets/img/Ruby.png" alt="Ruby"></div>
+                    <div class="slot"><img src="assets/img/Qi_Gem.png" alt="Gem"></div>
+                    <div class="slot"><img src="assets/img/Fire_Quartz.png" alt="Quartz"></div>
+                    <!-- Row 2 (Empty for now) -->
+                    <div class="slot"><img src="assets/img/Copper_Ore.png" alt="Copper"></div>
+                    <div class="slot"><img src="assets/img/greyStone1.png" alt="Stone"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <!-- Row 3 (Empty) -->
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                    <div class="slot"></div>
+                </div>
+
+                <!-- BOTTOM SECTION -->
+                <div class="bottom-section">
+                    <!-- Character & Equip -->
+                    <div class="character-panel">
+                        <div class="equipment-slots">
+                            <div class="equip-slot"><img src="assets/img/Tundra_Boots.png" alt="Boots"></div>
+                            <div class="equip-slot"><img src="assets/img/Hard_Hat.png" alt="Hat"></div>
+                            <div class="equip-slot"></div> <!-- Ring? -->
+                        </div>
+                        <div class="profile-group">
+                            <div class="character-portrait">
+                                <img src="assets/img/FotoProfil.jpg" alt="Profile">
+                            </div>
+                            <div style="text-align: center; font-size: 24px; color: #5e2c04;">
+                                Dera A
+                            </div>
+                        </div>
+                        <div class="equipment-slots">
+                            <div class="equip-slot"><img src="assets/img/Fried_Egg.png" alt="Food"></div>
+                            <div class="equip-slot"></div>
+                            <div class="equip-slot"></div>
+                        </div>
+                    </div>
+
+                    <!-- Info & Back -->
+                    <div class="info-panel">
+                        <div class="info-text">
+                            <div class="info-name">Dera Amelia</div>
+                            <div class="info-email">dera.amelia@mhs.unsoed.ac.id</div>
+                        </div>
+                        <a href="homepage.html" class="back-btn">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
